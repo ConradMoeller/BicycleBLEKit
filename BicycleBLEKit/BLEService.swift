@@ -15,10 +15,8 @@ protocol BLEServiceDelegate: class {
 
 class BLEService: NSObject {
 
-    // tailor:off
     static let BATTERY_SERVICE = "0x180F"
     static let BATTERY_LEVEL = "2A19"
-   // tailor:on
 
     var delegate: BLEServiceDelegate?
 
@@ -62,10 +60,9 @@ class BLEService: NSObject {
         if centralManager == nil || peripheral == nil || characteristic == nil {
             return false
         }
-        switch peripheral.state {
-        case .connected:
+        if peripheral.state == .connected {
             return true
-        default:
+        } else {
             return false
         }
     }
@@ -107,11 +104,8 @@ class BLEService: NSObject {
 extension BLEService: CBCentralManagerDelegate {
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        switch central.state {
-        case .poweredOn:
+        if central.state == .poweredOn {
             centralManager.scanForPeripherals(withServices: [serviceUUID])
-        default:
-            noop()
         }
     }
 
