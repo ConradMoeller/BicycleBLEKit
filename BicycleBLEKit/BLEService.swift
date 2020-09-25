@@ -15,8 +15,8 @@ protocol BLEServiceDelegate: class {
 
 class BLEService: NSObject {
 
-    static let BATTERY_SERVICE = "0x180F"
-    static let BATTERY_LEVEL = "2A19"
+    static let battery_service = "0x180F"
+    static let battery_level = "2A19"
 
     var delegate: BLEServiceDelegate?
 
@@ -95,10 +95,6 @@ class BLEService: NSObject {
     func getBatteryLevel() -> UInt8 {
         return batteryLevel
     }
-    
-    private func noop() {
-
-    }
 }
 
 extension BLEService: CBCentralManagerDelegate {
@@ -121,7 +117,7 @@ extension BLEService: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        peripheral.discoverServices([CBUUID(string: BLEService.BATTERY_SERVICE), serviceUUID])
+        peripheral.discoverServices([CBUUID(string: BLEService.battery_service), serviceUUID])
     }
 
 }
@@ -133,15 +129,15 @@ extension BLEService: CBPeripheralDelegate {
             return
         }
         for service in services {
-            peripheral.discoverCharacteristics([CBUUID(string: BLEService.BATTERY_LEVEL), characteristicUUID], for: service)
+            peripheral.discoverCharacteristics([CBUUID(string: BLEService.battery_level), characteristicUUID], for: service)
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
-        if service.uuid == CBUUID(string: BLEService.BATTERY_SERVICE) {
+        if service.uuid == CBUUID(string: BLEService.battery_service) {
             for characteristic in characteristics {
-                if characteristic.uuid == CBUUID(string: BLEService.BATTERY_LEVEL) {
+                if characteristic.uuid == CBUUID(string: BLEService.battery_level) {
                     peripheral.readValue(for: characteristic)
                 }
             }
@@ -166,10 +162,10 @@ extension BLEService: CBPeripheralDelegate {
             if delegate != nil {
                 delegate?.notify(characteristic: characteristic)
             }
-        case CBUUID(string: BLEService.BATTERY_LEVEL):
+        case CBUUID(string: BLEService.battery_level):
             batteryLevel = (characteristic.value?.first)!
         default:
-            noop()
+            ()
         }
     }
 
