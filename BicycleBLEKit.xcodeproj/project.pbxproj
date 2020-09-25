@@ -17,6 +17,8 @@
 		50BDF423251D0B4200B7E133 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 50BDF422251D0B4100B7E133 /* .travis.yml */; };
 		50E2C2BD251E69B7005F742D /* CyclingSpeedCadenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2BC251E69B7005F742D /* CyclingSpeedCadenceService.swift */; };
 		50E2C2BF251E745D005F742D /* PowerMeterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2BE251E745D005F742D /* PowerMeterService.swift */; };
+		50E2C2C2251E788C005F742D /* BicycleBLEKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2C0251E788B005F742D /* BicycleBLEKit.podspec */; };
+		50E2C2C3251E788C005F742D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2C1251E788C005F742D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		50BDF422251D0B4100B7E133 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		50E2C2BC251E69B7005F742D /* CyclingSpeedCadenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclingSpeedCadenceService.swift; sourceTree = "<group>"; };
 		50E2C2BE251E745D005F742D /* PowerMeterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerMeterService.swift; sourceTree = "<group>"; };
+		50E2C2C0251E788B005F742D /* BicycleBLEKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BicycleBLEKit.podspec; sourceTree = "<group>"; };
+		50E2C2C1251E788C005F742D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +71,9 @@
 		50BDF3DC251BCA4000B7E133 = {
 			isa = PBXGroup;
 			children = (
+				50E2C2C0251E788B005F742D /* BicycleBLEKit.podspec */,
 				50BDF422251D0B4100B7E133 /* .travis.yml */,
+				50E2C2C1251E788C005F742D /* README.md */,
 				50BDF3E8251BCA4000B7E133 /* BicycleBLEKit */,
 				50BDF3F3251BCA4000B7E133 /* BicycleBLEKitTests */,
 				50BDF3E7251BCA4000B7E133 /* Products */,
@@ -200,7 +206,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E2C2C3251E788C005F742D /* README.md in Resources */,
 				50BDF423251D0B4200B7E133 /* .travis.yml in Resources */,
+				50E2C2C2251E788C005F742D /* BicycleBLEKit.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

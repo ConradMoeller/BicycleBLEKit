@@ -38,10 +38,6 @@ extension PowerMeterService: BLEServiceDelegate {
         readMetrics(from: characteristic)
     }
 
-    func connected() {
-
-    }
-
     private func readMetrics(from characteristic: CBCharacteristic) {
         guard let characteristicData = characteristic.value else { return }
         let byteArray = [UInt8](characteristicData)
