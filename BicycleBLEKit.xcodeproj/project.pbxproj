@@ -16,6 +16,7 @@
 		50BDF417251BDF1400B7E133 /* HeartRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BDF416251BDF1400B7E133 /* HeartRateService.swift */; };
 		50BDF423251D0B4200B7E133 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 50BDF422251D0B4100B7E133 /* .travis.yml */; };
 		50E2C2BD251E69B7005F742D /* CyclingSpeedCadenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2BC251E69B7005F742D /* CyclingSpeedCadenceService.swift */; };
+		50E2C2BF251E745D005F742D /* PowerMeterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2BE251E745D005F742D /* PowerMeterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		50BDF416251BDF1400B7E133 /* HeartRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
 		50BDF422251D0B4100B7E133 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		50E2C2BC251E69B7005F742D /* CyclingSpeedCadenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclingSpeedCadenceService.swift; sourceTree = "<group>"; };
+		50E2C2BE251E745D005F742D /* PowerMeterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerMeterService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				50BDF40F251BD1F100B7E133 /* BLEService.swift */,
 				50BDF416251BDF1400B7E133 /* HeartRateService.swift */,
 				50E2C2BC251E69B7005F742D /* CyclingSpeedCadenceService.swift */,
+				50E2C2BE251E745D005F742D /* PowerMeterService.swift */,
 				50BDF405251BCEFF00B7E133 /* ByteUtil.swift */,
 				50BDF3E9251BCA4000B7E133 /* BicycleBLEKit.h */,
 				50BDF3EA251BCA4000B7E133 /* Info.plist */,
@@ -220,6 +223,7 @@
 				50E2C2BD251E69B7005F742D /* CyclingSpeedCadenceService.swift in Sources */,
 				50BDF417251BDF1400B7E133 /* HeartRateService.swift in Sources */,
 				50BDF413251BD1F100B7E133 /* BLEService.swift in Sources */,
+				50E2C2BF251E745D005F742D /* PowerMeterService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

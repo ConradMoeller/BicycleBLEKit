@@ -8,7 +8,7 @@
 
 import CoreBluetooth
 
-protocol CyclingSpeedCadenceDelegate {
+protocol CyclingSpeedCadenceMeasurementDelegate {
     func notifySpeed(speed: Double)
     func notifyCrankRPM(crankRPM: Int)
     func notifyWheelRevolutions(wheelRev: Int)
@@ -35,7 +35,7 @@ class CyclingSpeedCadenceService: BLEService {
     private var previousCrankRevolutionCount: Int = 0
     private var previousCrankEvent: Int = 0
 
-    var measurementDelegate: CyclingSpeedCadenceDelegate!
+    var measurementDelegate: CyclingSpeedCadenceMeasurementDelegate!
     
     init(deviceId: String, wheelSize: Int) {
         super.init(serviceId: "0x1816", characteristicId: "2A5B", deviceId: deviceId)
@@ -53,8 +53,7 @@ extension CyclingSpeedCadenceService: BLEServiceDelegate {
     private func readMetrics(from characteristic: CBCharacteristic) {
         guard let characteristicData = characteristic.value else { return }
         let byteArray = [UInt8](characteristicData)
-        var speedTest: UInt8 = UInt8(0)
-        speedTest = byteArray[0] & UInt8(1)
+        let speedTest = byteArray[0] & UInt8(1)
         if speedTest == 1 {
             var wheelRevolutions: UInt32 = 0
             var wheelEvent: Int = 0
@@ -62,8 +61,7 @@ extension CyclingSpeedCadenceService: BLEServiceDelegate {
             wheelEvent = ByteUtil.readUInt16(data: characteristicData as NSData, start: 5)
             speed = calculateSpeed(currentWheelRevolutionCount: wheelRevolutions, rawWheelEvent: wheelEvent)
         }
-        var cadTest = UInt8(0)
-        cadTest = byteArray[0] & UInt8(2)
+        let cadTest = byteArray[0] & UInt8(2)
         if cadTest == 2 {
             var crankRevolutions: Int = 0
             var crankEvent: Int = 0

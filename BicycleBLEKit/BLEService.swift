@@ -14,8 +14,8 @@ protocol BLEServiceDelegate: class {
 
 class BLEService: NSObject {
 
-    static let battery_service = "0x180F"
-    static let battery_level = "2A19"
+    static let batteryService = "0x180F"
+    static let batteryLevel = "2A19"
 
     var delegate: BLEServiceDelegate?
 
@@ -115,7 +115,7 @@ extension BLEService: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        peripheral.discoverServices([CBUUID(string: BLEService.battery_service), serviceUUID])
+        peripheral.discoverServices([CBUUID(string: BLEService.batteryService), serviceUUID])
     }
 
 }
@@ -127,15 +127,15 @@ extension BLEService: CBPeripheralDelegate {
             return
         }
         for service in services {
-            peripheral.discoverCharacteristics([CBUUID(string: BLEService.battery_level), characteristicUUID], for: service)
+            peripheral.discoverCharacteristics([CBUUID(string: BLEService.batteryLevel), characteristicUUID], for: service)
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
-        if service.uuid == CBUUID(string: BLEService.battery_service) {
+        if service.uuid == CBUUID(string: BLEService.batteryService) {
             for characteristic in characteristics {
-                if characteristic.uuid == CBUUID(string: BLEService.battery_level) {
+                if characteristic.uuid == CBUUID(string: BLEService.batteryLevel) {
                     peripheral.readValue(for: characteristic)
                 }
             }
@@ -160,7 +160,7 @@ extension BLEService: CBPeripheralDelegate {
             if delegate != nil {
                 delegate?.notify(characteristic: characteristic)
             }
-        case CBUUID(string: BLEService.battery_level):
+        case CBUUID(string: BLEService.batteryLevel):
             batteryLevel = (characteristic.value?.first)!
         default:
             ()
