@@ -2,14 +2,13 @@
 //  BLEService.swift
 //  BicycleBLEKit
 //
-//  Created by Conrad Moeller on 12.11.18.
-//  Copyright © 2018 Conrad Moeller. All rights reserved.
+//  Created by Conrad Moeller on 23.09.20.
+//  Copyright © 2020 Conrad Moeller. All rights reserved.
 //
 
 import CoreBluetooth
 
 protocol BLEServiceDelegate: class {
-    func connected()
     func notify(characteristic: CBCharacteristic)
 }
 
@@ -112,7 +111,6 @@ extension BLEService: CBCentralManagerDelegate {
             centralManager.stopScan()
             centralManager.connect(peripheral)
             wasConnected = true
-            delegate?.connected()
         }
     }
 

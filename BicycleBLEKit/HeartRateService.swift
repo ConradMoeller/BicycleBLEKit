@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 protocol HeartRateMeasurementDelegate {
-    func notifyHeartRate(bpm: Int);
+    func notifyHeartRate(bpm: Int)
 }
 
 class HeartRateService: BLEService {
@@ -25,10 +25,6 @@ class HeartRateService: BLEService {
     
 extension HeartRateService: BLEServiceDelegate {
 
-    func connected() {
-         
-    }
-    
     func notify(characteristic: CBCharacteristic) {
         if measurementDelegate != nil {
             measurementDelegate.notifyHeartRate(bpm: heartRate(from: characteristic))
