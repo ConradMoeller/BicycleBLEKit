@@ -9,10 +9,6 @@
 import Foundation
 import CoreBluetooth
 
-protocol HeartRateMeasurementDelegate {
-    func notifyHeartRate(bpm: Int)
-}
-
 class HeartRateService: BLEService {
     
     var measurementDelegate: HeartRateMeasurementDelegate!

@@ -8,13 +8,22 @@
 
 import Foundation
 
+public protocol HeartRateMeasurementDelegate {
+    func notifyHeartRate(bpm: Int)
+}
+
 public final class BicycleBLEKit {
 
-    init() {
+    private var heartRateService: HeartRateService!
+    
+    public init() {
         
     }
     
-    func foo() {
-        
+    public func listenToHeartRateService(deviceId: String, delegate: HeartRateMeasurementDelegate) {
+        heartRateService = HeartRateService(deviceId: deviceId)
+        heartRateService.connect()
+        heartRateService.measurementDelegate = delegate
     }
+    
 }

@@ -12,8 +12,7 @@ import BicycleBLEKit
 class Exapmples {
     
     func foo() {
-        let BLEKit = BicycleBLEKit()
-        
+        let b = BicycleBLEKit()
     }
     
 }
