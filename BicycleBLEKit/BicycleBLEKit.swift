@@ -9,5 +9,12 @@
 import Foundation
 
 public final class BicycleBLEKit {
-            
+
+    init() {
+        
+    }
+    
+    func foo() {
+        
+    }
 }
