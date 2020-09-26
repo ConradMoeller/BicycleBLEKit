@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "BicycleBLEKit"
   spec.version      = "0.0.1"
-  spec.summary      = "A short description of BicycleBLEKit."
+  spec.summary      = "Bicycle BLE API"
 
   spec.description  = <<-DESC
   This POD provides an API to easily access bicycle specific BLE units.

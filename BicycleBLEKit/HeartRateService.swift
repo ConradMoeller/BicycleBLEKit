@@ -34,6 +34,20 @@ extension HeartRateService: BLEServiceDelegate {
     private func heartRate(from characteristic: CBCharacteristic) -> Int {
         guard let characteristicData = characteristic.value else { return -1 }
         let byteArray = [UInt8](characteristicData)
+        let ch = HeartRateCharacteristics(byteArray: byteArray)
+        return ch.getHeartRate()
+    }
+}
+
+class HeartRateCharacteristics {
+    
+    private let byteArray: [UInt8]
+    
+    init(byteArray: [UInt8]) {
+        self.byteArray = byteArray
+    }
+    
+    func getHeartRate() -> Int {
         let firstBitValue = byteArray[0] & 0x01
         if firstBitValue == 0 {
             return Int(byteArray[1])

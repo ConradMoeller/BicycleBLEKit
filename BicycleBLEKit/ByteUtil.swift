@@ -1,9 +1,9 @@
 //
 //  ByteUtil.swift
-//  conRadAnalyzer
+//  BicycleBLEKit
 //
-//  Created by Conrad Moeller on 13.09.19.
-//  Copyright © 2019 Conrad Moeller. All rights reserved.
+//  Created by Conrad Moeller on 25.09.20.
+//  Copyright © 2020 Conrad Moeller. All rights reserved.
 //
 
 import Foundation
