@@ -20,6 +20,12 @@
 		50E2C2C2251E788C005F742D /* BicycleBLEKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2C0251E788B005F742D /* BicycleBLEKit.podspec */; };
 		50E2C2C3251E788C005F742D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2C1251E788C005F742D /* README.md */; };
 		50E2C2C5251F5F11005F742D /* .slather.yml in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2C4251F5F11005F742D /* .slather.yml */; };
+		50E2C2CD251F6416005F742D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2CC251F6416005F742D /* AppDelegate.swift */; };
+		50E2C2CF251F6416005F742D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2CE251F6416005F742D /* SceneDelegate.swift */; };
+		50E2C2D1251F6416005F742D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2D0251F6416005F742D /* ContentView.swift */; };
+		50E2C2D3251F6419005F742D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2D2251F6419005F742D /* Assets.xcassets */; };
+		50E2C2D6251F6419005F742D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2D5251F6419005F742D /* Preview Assets.xcassets */; };
+		50E2C2D9251F6419005F742D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2D7251F6419005F742D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,14 @@
 		50E2C2C0251E788B005F742D /* BicycleBLEKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BicycleBLEKit.podspec; sourceTree = "<group>"; };
 		50E2C2C1251E788C005F742D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		50E2C2C4251F5F11005F742D /* .slather.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .slather.yml; sourceTree = "<group>"; };
+		50E2C2CA251F6415005F742D /* BicycleBLEKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BicycleBLEKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E2C2CC251F6416005F742D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		50E2C2CE251F6416005F742D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		50E2C2D0251F6416005F742D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		50E2C2D2251F6419005F742D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50E2C2D5251F6419005F742D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		50E2C2D8251F6419005F742D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		50E2C2DA251F6419005F742D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50E2C2C7251F6415005F742D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,6 +100,7 @@
 				50E2C2C1251E788C005F742D /* README.md */,
 				50BDF3E8251BCA4000B7E133 /* BicycleBLEKit */,
 				50BDF3F3251BCA4000B7E133 /* BicycleBLEKitTests */,
+				50E2C2CB251F6416005F742D /* BicycleBLEKitExample */,
 				50BDF3E7251BCA4000B7E133 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +110,7 @@
 			children = (
 				50BDF3E6251BCA4000B7E133 /* BicycleBLEKit.framework */,
 				50BDF3EF251BCA4000B7E133 /* BicycleBLEKitTests.xctest */,
+				50E2C2CA251F6415005F742D /* BicycleBLEKitExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +137,28 @@
 				50BDF3F6251BCA4000B7E133 /* Info.plist */,
 			);
 			path = BicycleBLEKitTests;
+			sourceTree = "<group>";
+		};
+		50E2C2CB251F6416005F742D /* BicycleBLEKitExample */ = {
+			isa = PBXGroup;
+			children = (
+				50E2C2CC251F6416005F742D /* AppDelegate.swift */,
+				50E2C2CE251F6416005F742D /* SceneDelegate.swift */,
+				50E2C2D0251F6416005F742D /* ContentView.swift */,
+				50E2C2D2251F6419005F742D /* Assets.xcassets */,
+				50E2C2D7251F6419005F742D /* LaunchScreen.storyboard */,
+				50E2C2DA251F6419005F742D /* Info.plist */,
+				50E2C2D4251F6419005F742D /* Preview Content */,
+			);
+			path = BicycleBLEKitExample;
+			sourceTree = "<group>";
+		};
+		50E2C2D4251F6419005F742D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				50E2C2D5251F6419005F742D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +211,23 @@
 			productReference = 50BDF3EF251BCA4000B7E133 /* BicycleBLEKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		50E2C2C9251F6415005F742D /* BicycleBLEKitExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50E2C2DB251F6419005F742D /* Build configuration list for PBXNativeTarget "BicycleBLEKitExample" */;
+			buildPhases = (
+				50E2C2C6251F6415005F742D /* Sources */,
+				50E2C2C7251F6415005F742D /* Frameworks */,
+				50E2C2C8251F6415005F742D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BicycleBLEKitExample;
+			productName = BicycleBLEKitExample;
+			productReference = 50E2C2CA251F6415005F742D /* BicycleBLEKitExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -181,6 +243,9 @@
 						LastSwiftMigration = 1130;
 					};
 					50BDF3EE251BCA4000B7E133 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					50E2C2C9251F6415005F742D = {
 						CreatedOnToolsVersion = 11.3;
 					};
 				};
@@ -200,6 +265,7 @@
 			targets = (
 				50BDF3E5251BCA4000B7E133 /* BicycleBLEKit */,
 				50BDF3EE251BCA4000B7E133 /* BicycleBLEKitTests */,
+				50E2C2C9251F6415005F742D /* BicycleBLEKitExample */,
 			);
 		};
 /* End PBXProject section */
@@ -220,6 +286,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E2C2C8251F6415005F742D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E2C2D9251F6419005F742D /* LaunchScreen.storyboard in Resources */,
+				50E2C2D6251F6419005F742D /* Preview Assets.xcassets in Resources */,
+				50E2C2D3251F6419005F742D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +323,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50E2C2C6251F6415005F742D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E2C2CD251F6416005F742D /* AppDelegate.swift in Sources */,
+				50E2C2CF251F6416005F742D /* SceneDelegate.swift in Sources */,
+				50E2C2D1251F6416005F742D /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -256,6 +342,17 @@
 			targetProxy = 50BDF3F1251BCA4000B7E133 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		50E2C2D7251F6419005F742D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50E2C2D8251F6419005F742D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		50BDF3F8251BCA4000B7E133 /* Debug */ = {
@@ -471,6 +568,46 @@
 			};
 			name = Release;
 		};
+		50E2C2DC251F6419005F742D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BicycleBLEKitExample/Preview Content\"";
+				DEVELOPMENT_TEAM = YU6TJ5T878;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BicycleBLEKitExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.conrad-cycling.BicycleBLEKitExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50E2C2DD251F6419005F742D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BicycleBLEKitExample/Preview Content\"";
+				DEVELOPMENT_TEAM = YU6TJ5T878;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BicycleBLEKitExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.conrad-cycling.BicycleBLEKitExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -497,6 +634,15 @@
 			buildConfigurations = (
 				50BDF3FE251BCA4000B7E133 /* Debug */,
 				50BDF3FF251BCA4000B7E133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50E2C2DB251F6419005F742D /* Build configuration list for PBXNativeTarget "BicycleBLEKitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50E2C2DC251F6419005F742D /* Debug */,
+				50E2C2DD251F6419005F742D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

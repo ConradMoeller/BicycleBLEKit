@@ -7,4 +7,4 @@ script:
 
 after_success:
 - slather
-- bash <(curl -s https://codecov.io/bash) -f reports/cobertura.xml -X coveragepy -X gcov -X xcode
+- bash <(curl -s https://codecov.io/bash) -f reports/cobertura.xml -X coveragepy -X gcov -X xcode -t CODECOV_TOKEN="58635aa4-c36d-41cf-8de3-f66c21d006cb"
