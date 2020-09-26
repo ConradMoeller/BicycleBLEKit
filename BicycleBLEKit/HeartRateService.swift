@@ -12,11 +12,22 @@ import CoreBluetooth
 class HeartRateService: BLEService {
     
     var measurementDelegate: HeartRateMeasurementDelegate!
-    
-    init(deviceId: String) {
-        super.init(serviceId: "0x180D", characteristicId: "2A37", deviceId: deviceId);
+        
+    override init() {
+        super.init()
         delegate = self
     }
+    
+    override func getServiceUUID() -> String {
+        return "0x180D"
+    }
+    
+    override func getCharacteristicUUID() -> String {
+        return "2A37"
+    }
+
+    
+    
 }
     
 extension HeartRateService: BLEServiceDelegate {

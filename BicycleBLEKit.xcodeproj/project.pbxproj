@@ -27,6 +27,8 @@
 		50E2C2D6251F6419005F742D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2D5251F6419005F742D /* Preview Assets.xcassets */; };
 		50E2C2D9251F6419005F742D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50E2C2D7251F6419005F742D /* LaunchScreen.storyboard */; };
 		50E2C2DF251F6C4B005F742D /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2C2DE251F6C4B005F742D /* Examples.swift */; };
+		50E2C2E1251F9D32005F742D /* BicycleBLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BDF3E6251BCA4000B7E133 /* BicycleBLEKit.framework */; };
+		50E2C2E2251F9D32005F742D /* BicycleBLEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50BDF3E6251BCA4000B7E133 /* BicycleBLEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,28 @@
 			remoteGlobalIDString = 50BDF3E5251BCA4000B7E133;
 			remoteInfo = BicycleBLEKit;
 		};
+		50E2C2E3251F9D32005F742D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50BDF3DD251BCA4000B7E133 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50BDF3E5251BCA4000B7E133;
+			remoteInfo = BicycleBLEKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50E2C2E5251F9D32005F742D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				50E2C2E2251F9D32005F742D /* BicycleBLEKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		50BDF3E6251BCA4000B7E133 /* BicycleBLEKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BicycleBLEKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E2C2E1251F9D32005F742D /* BicycleBLEKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +128,7 @@
 				50BDF3F3251BCA4000B7E133 /* BicycleBLEKitTests */,
 				50E2C2CB251F6416005F742D /* BicycleBLEKitExample */,
 				50BDF3E7251BCA4000B7E133 /* Products */,
+				50E2C2E0251F9D32005F742D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,6 +189,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		50E2C2E0251F9D32005F742D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -221,10 +253,12 @@
 				50E2C2C6251F6415005F742D /* Sources */,
 				50E2C2C7251F6415005F742D /* Frameworks */,
 				50E2C2C8251F6415005F742D /* Resources */,
+				50E2C2E5251F9D32005F742D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				50E2C2E4251F9D32005F742D /* PBXTargetDependency */,
 			);
 			name = BicycleBLEKitExample;
 			productName = BicycleBLEKitExample;
@@ -344,6 +378,11 @@
 			isa = PBXTargetDependency;
 			target = 50BDF3E5251BCA4000B7E133 /* BicycleBLEKit */;
 			targetProxy = 50BDF3F1251BCA4000B7E133 /* PBXContainerItemProxy */;
+		};
+		50E2C2E4251F9D32005F742D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50BDF3E5251BCA4000B7E133 /* BicycleBLEKit */;
+			targetProxy = 50E2C2E3251F9D32005F742D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -581,6 +620,7 @@
 				DEVELOPMENT_TEAM = YU6TJ5T878;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BicycleBLEKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,7 +628,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.conrad-cycling.BicycleBLEKitExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -601,6 +641,7 @@
 				DEVELOPMENT_TEAM = YU6TJ5T878;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BicycleBLEKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,7 +649,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.conrad-cycling.BicycleBLEKitExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

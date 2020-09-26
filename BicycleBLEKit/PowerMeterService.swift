@@ -8,12 +8,6 @@
 
 import CoreBluetooth
 
-protocol PowerMeterMeasurementDelegate {
-    func notifyPower(power: Int)
-    func notifyBalance(power: Int)
-    func notifyCrankRPM(crankRPM: Int)
-}
-
 class PowerMeterService: BLEService {
 
     private var power = 0
@@ -26,9 +20,17 @@ class PowerMeterService: BLEService {
     
     var measurementDelegate: PowerMeterMeasurementDelegate!
 
-    init(deviceId: String) {
-        super.init(serviceId: "0x1818", characteristicId: "2A63", deviceId: deviceId)
+    override init() {
+        super.init()
         delegate = self
+    }
+    
+    override func getServiceUUID() -> String {
+        return "0x1818"
+    }
+    
+    override func getCharacteristicUUID() -> String {
+        return "2A63"
     }
 }
 

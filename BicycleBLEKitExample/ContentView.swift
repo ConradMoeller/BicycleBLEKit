@@ -7,10 +7,16 @@
 //
 
 import SwiftUI
+import BicycleBLEKit
 
 struct ContentView: View {
     var body: some View {
         Text("Hello, World!")
+    }
+    
+    func foo() {
+        let kit = BicycleBLEKit()
+        print(kit.scanForHeartRateDevices())
     }
 }
 

@@ -12,15 +12,37 @@ protocol BLEServiceDelegate: class {
     func notify(characteristic: CBCharacteristic)
 }
 
+class BLEDeviceImpl: BLEDevice {
+    
+    let id: String
+    let name: String
+    
+    init(id: String, name: String) {
+        self.id = id
+        self.name = name
+    }
+    
+    func getDeviceId() -> String {
+        return id
+    }
+    
+    func getDeviceName() -> String {
+        return name
+    }
+}
+
 class BLEService: NSObject {
 
     static let batteryService = "0x180F"
     static let batteryLevel = "2A19"
 
+    var devices = [BLEDevice]()
+    var scanCounter = 0
+    
     var delegate: BLEServiceDelegate?
 
-    private var serviceUUID: CBUUID
-    private var characteristicUUID: CBUUID
+    private var serviceUUID: CBUUID!
+    private var characteristicUUID: CBUUID!
     var deviceId: String!
 
     private var centralManager: CBCentralManager!
@@ -30,14 +52,23 @@ class BLEService: NSObject {
     var batteryLevel = UInt8(0)
 
     private var wasConnected = false
-
-    init(serviceId: String, characteristicId: String, deviceId: String) {
-        serviceUUID = CBUUID(string: serviceId)
-        characteristicUUID = CBUUID(string: characteristicId)
-        self.deviceId = deviceId
+    
+    func getServiceUUID() -> String {
+        return ""
+    }
+    
+    func getCharacteristicUUID() -> String {
+        return ""
+    }
+    
+    func getDevices() -> [BLEDevice] {
+        return devices
     }
 
-    func connect() {
+    func connect(deviceId: String) {
+        serviceUUID = CBUUID(string: getServiceUUID())
+        characteristicUUID = CBUUID(string: getCharacteristicUUID())
+        self.deviceId = deviceId
         connect(queue: nil)
     }
 
@@ -71,6 +102,12 @@ class BLEService: NSObject {
             return false
         }
         return !isDeviceConnected()
+    }
+    
+    func startScan() {
+        scanCounter = 0
+        devices.removeAll()
+        connect(queue: nil)
     }
 
     func stopScan() {
@@ -111,6 +148,11 @@ extension BLEService: CBCentralManagerDelegate {
             centralManager.stopScan()
             centralManager.connect(peripheral)
             wasConnected = true
+        } else {
+            devices.append(BLEDeviceImpl(id: peripheral.identifier.uuidString, name: peripheral.name!))
+            if scanCounter > 10 {
+                stopScan()
+            }
         }
     }
 

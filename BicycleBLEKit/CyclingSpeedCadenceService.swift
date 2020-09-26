@@ -8,14 +8,6 @@
 
 import CoreBluetooth
 
-protocol CyclingSpeedCadenceMeasurementDelegate {
-    func notifySpeed(speed: Double)
-    func notifyCrankRPM(crankRPM: Int)
-    func notifyWheelRevolutions(wheelRev: Int)
-    func notifyWheelRPM(wheelRPM: Int)
-    func notifyDistance(dist: Double)
-}
-
 class CyclingSpeedCadenceService: BLEService {
 
     private var lastSpeedCalculation = Date(timeIntervalSince1970: 0)
@@ -37,11 +29,23 @@ class CyclingSpeedCadenceService: BLEService {
 
     var measurementDelegate: CyclingSpeedCadenceMeasurementDelegate!
     
-    init(deviceId: String, wheelSize: Int) {
-        super.init(serviceId: "0x1816", characteristicId: "2A5B", deviceId: deviceId)
-        self.wheelSize = wheelSize
+    override init() {
+        super.init()
         delegate = self
     }
+    
+    override func getServiceUUID() -> String {
+        return "0x1816"
+    }
+    
+    override func getCharacteristicUUID() -> String {
+        return "2A5B"
+    }
+    
+    func setWheelSize(wheelSize: Int) {
+        self.wheelSize = wheelSize
+    }
+
 }
 
 extension CyclingSpeedCadenceService: BLEServiceDelegate {
