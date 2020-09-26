@@ -13,7 +13,7 @@ protocol HeartRateMeasurementDelegate {
     func notifyHeartRate(bpm: Int)
 }
 
-class HeartRateService: BLEService {
+public final class HeartRateService: BLEService {
     
     var measurementDelegate: HeartRateMeasurementDelegate!
     

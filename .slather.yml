@@ -3,4 +3,4 @@ xcodeproj: BicycleBLEKit.xcodeproj
 scheme: BicycleBLEKit
 output_directory: reports
 ignore:
-  - SwiftyLibTests/*
+  - BicycleBLEKit/*

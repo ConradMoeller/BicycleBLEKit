@@ -6,5 +6,5 @@ script:
   - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project BicycleBLEKit.xcodeproj -scheme BicycleBLEKit -sdk iphonesimulator13.2 -destination "platform=iOS Simulator,OS=13.3,name=iPhone 8" ONLY_ACTIVE_ARCH=YES
 
 after_success:
-- slather
-- bash <(curl -s https://codecov.io/bash) -f reports/cobertura.xml -X coveragepy -X gcov -X xcode -t CODECOV_TOKEN="58635aa4-c36d-41cf-8de3-f66c21d006cb"
+  - slather
+  - bash <(curl -s https://codecov.io/bash) -f reports/cobertura.xml -X coveragepy -X gcov -X xcode -t CODECOV_TOKEN="58635aa4-c36d-41cf-8de3-f66c21d006cb"
