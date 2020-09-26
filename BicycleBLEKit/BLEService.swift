@@ -130,23 +130,31 @@ extension BLEService: CBPeripheralDelegate {
             peripheral.discoverCharacteristics([CBUUID(string: BLEService.batteryLevel), characteristicUUID], for: service)
         }
     }
-
+        
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
         if service.uuid == CBUUID(string: BLEService.batteryService) {
-            for characteristic in characteristics {
-                if characteristic.uuid == CBUUID(string: BLEService.batteryLevel) {
-                    peripheral.readValue(for: characteristic)
-                }
-            }
+            readBatteryLevel(characteristics, peripheral)
         } else {
-            for characteristic in characteristics {
-                if characteristic.properties.contains(.read) {
-                    peripheral.readValue(for: characteristic)
-                }
-                if characteristic.properties.contains(.notify) {
-                    peripheral.setNotifyValue(true, for: characteristic)
-                }
+            readAndSwitchOnNotification(characteristics, peripheral)
+        }
+    }
+    
+    fileprivate func readBatteryLevel(_ characteristics: [CBCharacteristic], _ peripheral: CBPeripheral) {
+        for characteristic in characteristics {
+            if characteristic.uuid == CBUUID(string: BLEService.batteryLevel) {
+                peripheral.readValue(for: characteristic)
+            }
+        }
+    }
+    
+    fileprivate func readAndSwitchOnNotification(_ characteristics: [CBCharacteristic], _ peripheral: CBPeripheral) {
+        for characteristic in characteristics {
+            if characteristic.properties.contains(.read) {
+                peripheral.readValue(for: characteristic)
+            }
+            if characteristic.properties.contains(.notify) {
+                peripheral.setNotifyValue(true, for: characteristic)
             }
         }
     }
