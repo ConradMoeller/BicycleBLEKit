@@ -16,12 +16,21 @@ struct ContentView: View {
     
     func foo() {
         let kit = BicycleBLEKit()
-        print(kit.scanForHeartRateDevices())
+        kit.scanForHeartRateDevices()
+        sleep(10)
+        let id = kit.getHeartRateDevices()[0].getDeviceId()
+        kit.listenToHeartRateService(deviceId: id, delegate: HeartRateDel())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+class HeartRateDel: HeartRateMeasurementDelegate {
+    func notifyHeartRate(bpm: Int) {
+        print(bpm)
     }
 }

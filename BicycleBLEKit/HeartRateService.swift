@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 class HeartRateService: BLEService {
-    
+        
     var measurementDelegate: HeartRateMeasurementDelegate!
         
     override init() {
@@ -26,8 +26,6 @@ class HeartRateService: BLEService {
         return "2A37"
     }
 
-    
-    
 }
     
 extension HeartRateService: BLEServiceDelegate {

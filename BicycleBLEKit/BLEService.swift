@@ -65,14 +65,10 @@ class BLEService: NSObject {
         return devices
     }
 
-    func connect(deviceId: String) {
+    func connect(deviceId: String, queue: DispatchQueue?) {
         serviceUUID = CBUUID(string: getServiceUUID())
         characteristicUUID = CBUUID(string: getCharacteristicUUID())
         self.deviceId = deviceId
-        connect(queue: nil)
-    }
-
-    func connect(queue: DispatchQueue?) {
         if !isDeviceConnected() {
             wasConnected = false
             centralManager = CBCentralManager(delegate: self, queue: queue)
@@ -104,10 +100,14 @@ class BLEService: NSObject {
         return !isDeviceConnected()
     }
     
-    func startScan() {
+    func startScan(queue: DispatchQueue?) {
+        serviceUUID = CBUUID(string: getServiceUUID())
         scanCounter = 0
         devices.removeAll()
-        connect(queue: nil)
+        if !isDeviceConnected() {
+            wasConnected = false
+            centralManager = CBCentralManager(delegate: self, queue: queue)
+        }
     }
 
     func stopScan() {
@@ -149,7 +149,12 @@ extension BLEService: CBCentralManagerDelegate {
             centralManager.connect(peripheral)
             wasConnected = true
         } else {
-            devices.append(BLEDeviceImpl(id: peripheral.identifier.uuidString, name: peripheral.name!))
+            scanCounter+=1
+            if (!devices.contains(where: { (d) -> Bool in
+                return d.getDeviceId() == peripheral.identifier.uuidString
+            })) {
+                devices.append(BLEDeviceImpl(id: peripheral.identifier.uuidString, name: peripheral.name!))
+            }
             if scanCounter > 10 {
                 stopScan()
             }
