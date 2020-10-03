@@ -37,7 +37,7 @@ class BLEService: NSObject {
     static let batteryLevel = "2A19"
 
     var devices = [BLEDevice]()
-    var scanCounter = 0
+    var deviceDiscovered: BLEDeviceDiscoverDelegate?
     
     var delegate: BLEServiceDelegate?
 
@@ -102,7 +102,6 @@ class BLEService: NSObject {
     
     func startScan(queue: DispatchQueue?) {
         serviceUUID = CBUUID(string: getServiceUUID())
-        scanCounter = 0
         devices.removeAll()
         if !isDeviceConnected() {
             wasConnected = false
@@ -149,14 +148,14 @@ extension BLEService: CBCentralManagerDelegate {
             centralManager.connect(peripheral)
             wasConnected = true
         } else {
-            scanCounter+=1
             if (!devices.contains(where: { (d) -> Bool in
                 return d.getDeviceId() == peripheral.identifier.uuidString
             })) {
-                devices.append(BLEDeviceImpl(id: peripheral.identifier.uuidString, name: peripheral.name!))
-            }
-            if scanCounter > 10 {
-                stopScan()
+                let device = BLEDeviceImpl(id: peripheral.identifier.uuidString, name: peripheral.name!)
+                devices.append(device)
+                if deviceDiscovered != nil {
+                    deviceDiscovered?.deviceDiscovered(device: device)
+                }
             }
         }
     }
@@ -213,6 +212,7 @@ extension BLEService: CBPeripheralDelegate {
         switch characteristic.uuid {
         case characteristicUUID:
             if delegate != nil {
+                self.characteristic = characteristic
                 delegate?.notify(characteristic: characteristic)
             }
         case CBUUID(string: BLEService.batteryLevel):
