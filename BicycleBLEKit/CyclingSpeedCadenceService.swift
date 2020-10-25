@@ -52,6 +52,13 @@ extension CyclingSpeedCadenceService: BLEServiceDelegate {
 
     func notify(characteristic: CBCharacteristic) {
         readMetrics(from: characteristic)
+        if measurementDelegate != nil {
+            measurementDelegate.notifySpeed(speed: speed)
+            measurementDelegate.notifyDistance(dist: distance)
+            measurementDelegate.notifyWheelRPM(wheelRPM: wheelRPM)
+            measurementDelegate.notifyWheelRevolutions(wheelRev: wheelRevolutions)
+            measurementDelegate.notifyCrankRPM(crankRPM: crankRPM)
+        }
     }
 
     private func readMetrics(from characteristic: CBCharacteristic) {
@@ -73,12 +80,6 @@ extension CyclingSpeedCadenceService: BLEServiceDelegate {
             crankEvent = ByteUtil.readUInt16(data: characteristicData as NSData, start: 9)
             crankRPM = calculateCrankRPM(currentCrankRevolutionCount: crankRevolutions, rawCrankEvent: crankEvent)
         }
-        if measurementDelegate != nil {
-            measurementDelegate.notifySpeed(speed: speed)
-            measurementDelegate.notifyCrankRPM(crankRPM: crankRPM)
-            measurementDelegate.notifyDistance(dist: distance)
-            measurementDelegate.notifyWheelRPM(wheelRPM: wheelRPM)
-        }
     }
 
     private func calculateSpeed(currentWheelRevolutionCount: UInt32, rawWheelEvent: Int) -> Double {
@@ -89,6 +90,7 @@ extension CyclingSpeedCadenceService: BLEServiceDelegate {
         }
         var deltaWE = rawWheelEvent - previousWheelEvent
         var deltaWRC = currentWheelRevolutionCount - previousWheelRevolutionCount
+        wheelRevolutions = Int(deltaWRC)
         if deltaWE == 0 && deltaWRC == 0 {
             if abs(lastSpeedCalculation.timeIntervalSinceNow) < 1.1 {
                 return speed

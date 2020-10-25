@@ -31,7 +31,7 @@ public protocol CyclingSpeedCadenceMeasurementDelegate {
 
 public protocol PowerMeterMeasurementDelegate {
     func notifyPower(power: Int)
-    func notifyBalance(power: Int)
+    func notifyBalance(balance: Int)
     func notifyCrankRPM(crankRPM: Int)
 }
 
@@ -89,11 +89,7 @@ public final class BicycleBLEKit {
         cscService.measurementDelegate = delegate
         cscService.connect(deviceId: deviceId, queue: queue)
     }
-    
-    public func startListenToCSCService() {
-        cscService.disconnect()
-    }
-    
+        
     public func stopListenCSCService() {
         cscService.disconnect()
     }

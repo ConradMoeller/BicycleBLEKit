@@ -38,6 +38,11 @@ extension PowerMeterService: BLEServiceDelegate {
 
     func notify(characteristic: CBCharacteristic) {
         readMetrics(from: characteristic)
+        if measurementDelegate != nil {
+            measurementDelegate.notifyPower(power: power)
+            measurementDelegate.notifyBalance(balance: balance)
+            measurementDelegate.notifyCrankRPM(crankRPM: rpm)
+        }
     }
 
     private func readMetrics(from characteristic: CBCharacteristic) {
